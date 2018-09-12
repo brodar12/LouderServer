@@ -1,0 +1,49 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <welcome-file-list>
+    <welcome-file>hardwareinfo.jsp</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>FindServlet</servlet-name>
+    <servlet-class>com.Servlets.FindServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FindServlet</servlet-name>
+    <url-pattern>/serv/FindServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>PaginationServlet</servlet-name>
+    <servlet-class>com.Servlets.PaginationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PaginationServlet</servlet-name>
+    <url-pattern>/serv/PaginationServlet</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>Pagination</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>REST_Data</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Pagination</servlet-name>
+    <url-pattern>/colia/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>

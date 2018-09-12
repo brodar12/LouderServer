@@ -1,0 +1,81 @@
+
+.nav_bar{
+  background-color: #212529;
+  overflow: hidden;
+}
+
+.nav_bar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+.nav_bar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.nav_bar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.logout_component{
+  float: right;
+  padding-right: 42px;
+}
+
+.logout_component a.logoutstyle {
+    background-color: #212529;
+    color: white;
+}
+
+.logout_component a:hover {
+    color:#8ffbab;
+
+}
+
+.page-link {
+    color: #333435;
+}
+
+.form_box{
+background-color:#fff;
+border-radius: 6px;
+}
+
+
+.top_messages{
+  color: #fff;
+  font-size: 29px;
+  text-align: center;
+}
+
+.form-group {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.btn-primary {width: 416px;}
+
+.form_box {padding-top: 45px;}
+
+.btn-primary {
+    background-color: #4CAF50;
+    border-color: #00ff184d;
+}
+
+.btn-primary:hover {
+    background-color: #00d92c7d;
+    border-color: #00d92c7d;
+}
+
+.inlines{
+  display: inline-block;
+  font-size: 20px;
+}
