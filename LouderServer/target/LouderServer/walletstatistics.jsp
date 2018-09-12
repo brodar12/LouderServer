@@ -65,7 +65,7 @@ if(db_operation.get_data_is_empty()==0){
 else{
 %>
 
-
+<!--<form action="http://localhost:8080/LouderServer/serv/StatusServlet" method="POST"> -->
 
 <div class="row">
   <div class="emptycol" style="height:65px; width: 1024px;"></div>
@@ -74,6 +74,7 @@ else{
 <div class="row">
     <div class="emptycol" style="height:50px; width: 1024px;">
       <h2>Statistics</h2>
+       <button class="btn btn-success" style="margin-left: 91%;margin-top: -6%;" >Send File</button>
     </div>
 </div>
 
@@ -123,18 +124,19 @@ else{
                         }
                         else {
                         %>
-                              <h4 style="color:gren;">Waiting</h4>
+                              <h4 style="color:green;">Waiting</h4>
                         <%
                         }
                         %>
                   </td>
                   <td>
-                       <form>
+                     <!-- href="LinkURL" target="_blank">
                          <div class="form-check">
-                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                           <input type="checkbox" class="form-check-input" name="status" value="<%=items.get(i).getMacaddress()%>" >
                            <label class="form-check-label" for="exampleCheck1">Install file</label>
-                         </div>
-                       </form>
+                         </div>-->
+                          <button  class="btn btn-success"  onclick="location.href='http://google.com';" >Install file</button>
+
                   </td>
                 </tr>
               </tbody>
@@ -178,6 +180,8 @@ else{
 <%
 }
 %>
+
+<!-- </form>-->
 
 </div>
 
