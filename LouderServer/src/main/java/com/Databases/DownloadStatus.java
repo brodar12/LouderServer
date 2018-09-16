@@ -1,11 +1,6 @@
 package com.Databases;
 
-import com.Model.PcHardware;
-import com.Model.StatusOfDownload;
-import com.Model.WalletStatistics;
-
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * Created by mihai on 9/12/2018.

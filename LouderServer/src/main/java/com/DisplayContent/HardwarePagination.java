@@ -2,6 +2,11 @@ package com.DisplayContent;
 
 import com.Databases.HardwareInfoCrud;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.util.logging.Logger.getLogger;
+
 /**
  * Created by mihai on 3/14/2018.
  */
@@ -45,6 +50,9 @@ public class HardwarePagination {
         return curent_page;
     }
 
+    public static int get_all_page(){
+        return all_pages;
+    }
 
     public static int get_next_page(){
         return next_step;
@@ -62,8 +70,7 @@ public class HardwarePagination {
 
 
     public static boolean set_next_page(){
-
-        if(next_step+1<=all_pages){
+        if(next_step<=all_pages){
             ++next_step;
             ++previous_step;
             if(curent_page<previous_step)curent_page=previous_step;
@@ -75,7 +82,7 @@ public class HardwarePagination {
 
 
     public static boolean set_previous_page(){
-        if(previous_step-1>0){
+        if(previous_step>0){
             --previous_step;
             --next_step;
             if(curent_page>next_step)curent_page=next_step;

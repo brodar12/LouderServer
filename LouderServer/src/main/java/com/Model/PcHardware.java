@@ -10,6 +10,7 @@ public class PcHardware {
     private String ostype;
     private String physicalmemory;
     private String ip;
+    private String date_time;
 
 
 
@@ -53,4 +54,9 @@ public class PcHardware {
     public String getPhysicalmemory() {return physicalmemory;}
 
     public void setPhysicalmemory(String physicalmemory) {this.physicalmemory = physicalmemory;}
+
+    public String getDate_time() {return date_time;}
+
+    public void setDate_time(String date_time) {this.date_time = date_time;}
+
 }

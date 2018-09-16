@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <welcome-file-list>
-    <welcome-file>hardwareinfo.jsp</welcome-file>
+    <welcome-file>basic_admin_panel.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>

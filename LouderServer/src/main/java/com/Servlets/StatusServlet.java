@@ -72,7 +72,7 @@ public class StatusServlet extends HttpServlet {
             }
 
 
-            resp.sendRedirect("http://localhost:8080/LouderServer/walletstatistics.jsp");
+            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
