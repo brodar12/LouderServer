@@ -60,11 +60,12 @@ public class FindServlet extends HttpServlet{
                     hardwareinf.insert_item(hardware, infonetworking.get_id_data(validate_net.validate_Macaddress(req.getParameter("macaddres"))));
                 }
             }
-            else if(req.getParameter("type").equals("wallet")){
+           /* else if(req.getParameter("type").equals("wallet")){
                 logg.log(Level.INFO, "Type::" + req.getParameter("type"));
                 walletinf.insert_item(infonetworking.get_id_data(validate_net.validate_Macaddress(req.getParameter("macaddress"))),
                         req.getParameter("wallet"),walletinf.get_id_wallet(req.getParameter("typewallet")));
-            }
+            }*/
+
         } catch (Exception e) {
             e.printStackTrace();
         }

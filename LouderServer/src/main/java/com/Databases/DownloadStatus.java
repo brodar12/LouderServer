@@ -58,5 +58,20 @@ public class DownloadStatus {
     }
 
 
+    public boolean update_download_action(String macaddress,boolean status){
+        try {
+            if(create_connection()==true) {
+                    if(stat.executeUpdate("update downloadstatus set action="+status+" where \n"+
+                            " macaddress=(Select id from networking where macaddress='"+macaddress+"');")>0)return true;
+                    else return false;
+            }
+            stat.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
 
 }

@@ -74,7 +74,8 @@ else{
 <div class="row">
     <div class="emptycol" style="height:50px; width: 1024px;">
       <h2>Statistics</h2>
-       <button class="btn btn-success" style="margin-left: 91%;margin-top: -6%;" >Send File</button>
+       <button class="btn btn-success" onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=sendforallfile&macaddress=null';" style="margin-left: 79%;margin-top: -6%;"  >Send All File</button>
+       <button class="btn btn-success" onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=sendfiles&macaddress=null';" style="margin-left: 91%;margin-top: -11%;"  >Send File</button>
     </div>
 </div>
 
@@ -135,7 +136,8 @@ else{
                            <input type="checkbox" class="form-check-input" name="status" value="<%=items.get(i).getMacaddress()%>" >
                            <label class="form-check-label" for="exampleCheck1">Install file</label>
                          </div>-->
-                          <button  class="btn btn-primary"  onclick="location.href='http://google.com';" >Install file</button>
+
+                          <button type="button" class="btn btn-primary" style="width:115px; margin-left: -20px;"  onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=decline&macaddress=<%=items.get(i).getMacaddress()%>';" >Install file</button>
 
                   </td>
                 </tr>
