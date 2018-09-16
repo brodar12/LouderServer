@@ -28,19 +28,14 @@ public class StatusServlet extends HttpServlet {
                  resp.setContentType("text/html");
 
                  PrintWriter out = resp.getWriter();
-                /* String title = "Auto Refresh Header Setting";
-                 String docType =
-                         "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";*/
 
                  out.println(
                          "Client_bot.exe\n" +
                                  "45544554\n"
-                        /* "<filename>Client_bot.exe</filename>\n" +
-                         "<filesize>45544554</filesize>\n"*/
                  );
              }
 
-           // resp.sendRedirect("https://www.google.com");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

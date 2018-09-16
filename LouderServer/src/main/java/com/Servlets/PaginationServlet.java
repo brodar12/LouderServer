@@ -20,8 +20,6 @@ public class PaginationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
-        Logger logg = Logger.getLogger(this.getClass().getName());
-
 
         if(req.getParameter("display").equals("downloadstat")) {
 
