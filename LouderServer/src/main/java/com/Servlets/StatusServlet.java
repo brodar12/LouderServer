@@ -1,6 +1,7 @@
 package com.Servlets;
 
 import com.Databases.DownloadStatus;
+import com.Filter.FilterNetworkinginfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +20,13 @@ public class StatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        FilterNetworkinginfo validate_net = new FilterNetworkinginfo();
+
         try {
             Logger logg = Logger.getLogger(this.getClass().getName());
 
              if (req.getParameter("macaddres") != "" && req.getParameter("ipaddres") != ""){
-                 logg.log(Level.INFO, "Log get valid mac and ip:" + req.getParameter("ipaddres")+" mac:"+req.getParameter("macaddres"));
+                 logg.log(Level.INFO, "Log get valid mac and ip:" + validate_net.validate_IP(req.getParameter("ipaddres"))+" mac:"+ validate_net.validate_Macaddress(req.getParameter("macaddres")));
 
                  resp.setContentType("text/html");
 
