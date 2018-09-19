@@ -21,6 +21,7 @@ public class FindServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        DownloadStatus downloadStatus= new DownloadStatus();
         FilterNetworkinginfo validate_net = new FilterNetworkinginfo();
         FilterHardwareinfo validate_hardware=new FilterHardwareinfo();
         NetworkingCrud infonetworking = new NetworkingCrud();
@@ -39,6 +40,7 @@ public class FindServlet extends HttpServlet{
                         net.setIp(validate_net.validate_IP(req.getParameter("ip")));
                         net.setMacaddress(validate_net.validate_Macaddress(req.getParameter("macaddress")));
                         infonetworking.insert_item(net);
+                        downloadStatus.insert_download_status_empty(infonetworking.get_id_data(validate_net.validate_Macaddress(req.getParameter("macaddress"))));
                     }
                 }
             } else if (req.getParameter("type").equals("hardware")) {
