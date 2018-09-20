@@ -140,6 +140,20 @@ public class DownloadStatus {
         return true;
     }
 
+    public boolean update_all_download_action_true(){
+        try {
+            if(create_connection()==true) {
+                if(stat.executeUpdate("  update downloadstatus set action=true where id>0 and status!=true;")>0)return true;
+                else return false;
+            }
+            stat.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     public boolean validate_macaddress_and_ip(String macaddress,String ip){
         int save_val=0;
         try {

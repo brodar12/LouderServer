@@ -70,7 +70,7 @@ public class StatusServlet extends HttpServlet {
             }
             else if(req.getParameter("status").equals("sendforallfile")){
                 logg.log(Level.INFO, "Log first validation checkbox status1:" + req.getParameter("status"));
-
+                downloadStatus.update_all_download_action_true();
             }
             else if (req.getParameter("macaddress") != "null") {
                 logg.log(Level.INFO, "Execute update of download status:" + req.getParameter("macaddress"));
