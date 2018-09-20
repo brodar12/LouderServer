@@ -64,9 +64,9 @@ public class StatusServlet extends HttpServlet {
 
             Logger logg = Logger.getLogger(this.getClass().getName());
 
-            if (req.getParameter("status").equals("sendfiles")) {
+            if (req.getParameter("status").equals("clearall")) {
                 logg.log(Level.INFO, "Log first validation checkbox status:" + req.getParameter("status"));
-
+                downloadStatus.update_all_download_action_status();
             }
             else if(req.getParameter("status").equals("sendforallfile")){
                 logg.log(Level.INFO, "Log first validation checkbox status1:" + req.getParameter("status"));
