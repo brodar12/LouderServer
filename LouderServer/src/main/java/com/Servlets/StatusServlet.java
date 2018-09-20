@@ -42,8 +42,10 @@ public class StatusServlet extends HttpServlet {
                        }
 
                  }
-
-
+             }
+             else if(req.getParameter("filePath") != ""){
+                 logg.log(Level.INFO, "Log path to file:"+req.getParameter("filePath"));
+                 resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
              }
 
 

@@ -46,6 +46,9 @@ public class PaginationServlet extends HttpServlet {
         else if(req.getParameter("display").equals("modal")){
             resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp?modalaces=true&mac="+ req.getParameter("macaddress"));
         }
+        else if(req.getParameter("display").equals("modalpathfile")){
+            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp?modalaces1=true&mac=");
+        }
 
 
     }

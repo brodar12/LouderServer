@@ -23,14 +23,15 @@
     ArrayList<PcHardware> items;
     PcHardware items_hardware;
     int count_pag=0;
-    String modal_access,mac_address;
+    String modal_access,modal_access_file,mac_address;
     %>
 
 <div class="nav_bar" >
     <a class="active" href="#home">Admin Panel</a>
+       <a class="logoutstyle" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=modalpathfile">Set File Path</a>
        <div class="logout_component">
        <a class="logoutstyle" href="#logout" >Logout</a>
-    </div>
+       </div>
 </div>
 
 
@@ -187,8 +188,46 @@ else{
 }
 %>
 
-
 </div>
+
+
+<div class="modal fade" id="FilePath" tabindex="-1" role="dialog" aria-labelledby="FilePathLabel" aria-hidden="true" style="padding-top: 170px;" >
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="width: auto;height:auto;">
+      <div class="modal-header" style="background-color:#212529;color: #fff;">
+        <h3 class="modal-title" id="FilePathLabel">File path</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+
+        <div class="container">
+        <div class="row">
+          <div class="col">
+                   <form method="POST" action="http://localhost:8080/LouderServer/serv/StatusServlet?macaddres=&ipaddres='">
+                     <div class="row">
+                       <div class="col">
+                         <input type="text" name="filePath" style="width:100%; margin-top:20px;" class="form-control" placeholder="Path to file">
+                       </div>
+                     </div>
+                      <div class="row">
+                        <div class="col">
+                        <button type="submit" style="width:150px; margin-top: 25px;" class="btn btn-primary">Set path</button>
+                        </div>
+                      </div>
+                   </form>
+          </div>
+        </div>
+      </div>
+
+  </center>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="modal fade" id="ModalHardware" tabindex="-1" role="dialog" aria-labelledby="ModalHardwareLabel" aria-hidden="true" style="padding-top: 170px;" >
@@ -273,6 +312,19 @@ $('#ModalHardware').appendTo("body").modal('show');
 }
 %>
 
+
+<%
+modal_access_file=request.getParameter("modalaces1");
+if(modal_access_file!=null && modal_access_file.equals("true") ){
+%>
+
+<script type="text/javascript" >
+$('#FilePath').appendTo("body").modal('show');
+</script>
+
+<%
+}
+%>
 
   </body>
 </html>
