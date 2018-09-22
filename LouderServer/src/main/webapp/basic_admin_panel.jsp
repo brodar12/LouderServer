@@ -23,7 +23,7 @@
     ArrayList<PcHardware> items;
     PcHardware items_hardware;
     int count_pag=0;
-    String modal_access,modal_access_file,mac_address;
+    String modal_access,modal_access_file,mac_address,filePath;
     %>
 
 <div class="nav_bar" >
@@ -204,12 +204,30 @@ else{
         <center>
 
         <div class="container">
+         <div class="row">
+             <div class="col">
+                <H4>Mounted file:<%=status_down.get_file_name()%></H4>
+             </div>
+         </div>
         <div class="row">
           <div class="col">
                    <form method="POST" action="http://localhost:8080/LouderServer/serv/StatusServlet?macaddres=&ipaddres='">
                      <div class="row">
                        <div class="col">
-                         <input type="text" name="filePath" style="width:100%; margin-top:20px;" class="form-control" placeholder="Path to file">
+                         <input type="text" name="filePath" style="width:100%; margin-top:20px;" class="form-control"
+                         <%
+                         if(status_down.get_file_path()!=null){
+                         %>
+                         value="<%=status_down.get_file_path()%>"
+                         <%
+                         }
+                         else{
+                         %>
+                           placeholder="Path to file"
+                           <%
+                           }
+                           %>
+                         >
                        </div>
                      </div>
                       <div class="row">

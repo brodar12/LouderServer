@@ -36,7 +36,9 @@ public class StatusServlet extends HttpServlet {
                        if(downloadStatus.get_download_action(validate_net.validate_Macaddress(req.getParameter("macaddres")))==true){
                            downloadStatus.update_download_action(validate_net.validate_Macaddress(req.getParameter("macaddres")),false);
                            downloadStatus.update_download_status(validate_net.validate_Macaddress(req.getParameter("macaddres")),true);
-                           out.println("Client_bot.exe\n" + "502784\n");
+                           if(downloadStatus.get_file_name()!="Not exist!!!"){
+                               out.println(downloadStatus.get_file_name()+"\n" + downloadStatus.get_file_size()+"\n");
+                           }
                        }else{
                            logg.log(Level.INFO, "Log action for macaddress="+validate_net.validate_Macaddress(req.getParameter("macaddres"))+" is false!!!");
                        }
@@ -45,6 +47,7 @@ public class StatusServlet extends HttpServlet {
              }
              else if(req.getParameter("filePath") != ""){
                  logg.log(Level.INFO, "Log path to file:"+req.getParameter("filePath"));
+                 downloadStatus.set_file_path(req.getParameter("filePath") );
                  resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
              }
 

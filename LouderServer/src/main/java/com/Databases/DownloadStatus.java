@@ -1,6 +1,10 @@
 package com.Databases;
 
+import java.io.*;
 import java.sql.*;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by mihai on 9/12/2018.
@@ -170,6 +174,81 @@ public class DownloadStatus {
             e.printStackTrace();
         }
         return true;
+    }
+
+
+    public void set_file_path(String file_path){
+        Properties prop= new Properties();
+        OutputStream out=null;
+
+        Logger logg = Logger.getLogger(this.getClass().getName());
+        logg.log(Level.INFO, "Get path:" +getClass().getResource("/netconfig.properties"));
+
+        try {
+            out= new FileOutputStream(getClass().getResource("/netconfig.properties").getPath());
+            prop.setProperty("file_path_mem",file_path);
+            prop.store(out,null);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String get_file_path(){
+        Properties prop= new Properties();
+        FileInputStream in=null;
+
+        Logger logg = Logger.getLogger(this.getClass().getName());
+        logg.log(Level.INFO, "Get path:" +getClass().getResource("/netconfig.properties"));
+
+        try {
+            in= new FileInputStream(getClass().getResource("/netconfig.properties").getPath());
+            prop.load(in);
+            if(prop.getProperty("file_path_mem").toString()!="null"){
+                return prop.getProperty("file_path_mem");
+            }
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Path to file";
+    }
+
+   public String get_file_name(){
+       String path= get_file_path();
+       try {
+               if(get_file_path()!="null") {
+               File folder = new File(path);
+               File[] listOfFiles = folder.listFiles();
+               for (File file : listOfFiles) {
+                   if (file.isFile()) {
+                       return file.getName();
+                   }
+               }
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return "Not exist!!!";
+   }
+
+    public int get_file_size(){
+        String path= get_file_path();
+        try {
+            if(get_file_path()!="null") {
+                File folder = new File(path);
+                File[] listOfFiles = folder.listFiles();
+                for (File file : listOfFiles) {
+                    if (file.isFile()) {
+                        return (int)file.length();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 
