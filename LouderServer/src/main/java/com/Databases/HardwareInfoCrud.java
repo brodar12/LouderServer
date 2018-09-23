@@ -1,5 +1,6 @@
 package com.Databases;
 
+import com.InitializeResources.InitDatabaseConnection;
 import com.Model.PcHardware;
 
 import java.sql.*;
@@ -14,9 +15,6 @@ public class HardwareInfoCrud {
 
     private Connection con= null;
     private Statement stat=null;
-    private static  final  String DBurl="jdbc:mysql://localhost/LouderAdmin";
-    private static final String username="root";
-    private static final String password="1111";
 
 
     public HardwareInfoCrud(){}
@@ -25,8 +23,8 @@ public class HardwareInfoCrud {
     public boolean create_connection(){
         boolean conect_status=true;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection(DBurl,username, password);
+
+            con= InitDatabaseConnection.getInstance().get_database_connection();
             stat=con.createStatement();
         } catch (Exception e) {
             conect_status=false;
@@ -55,7 +53,7 @@ public class HardwareInfoCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -83,7 +81,7 @@ public class HardwareInfoCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,7 +107,7 @@ public class HardwareInfoCrud {
                 }else {count_db=1;}
             }
             stat.close();
-            con.close();
+          //  con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -126,7 +124,7 @@ public class HardwareInfoCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,7 +140,7 @@ public class HardwareInfoCrud {
                 stat.executeUpdate("Insert into HardwareInfo values(null,'"+item.getCpu_type()+"','"+item.getGpu_type()+"','"+item.getPhysicalmemory()+"','"+item.getOstype()+"',"+net_id+");");
             }
             stat.close();
-            con.close();
+          //  con.close();
         } catch (SQLException e) {
             status_execution=false;
             e.printStackTrace();
@@ -170,7 +168,7 @@ public class HardwareInfoCrud {
 
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             System.out.println("Failed conection to DB!!!!");
             e.printStackTrace();
@@ -200,7 +198,7 @@ public class HardwareInfoCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             System.out.println("Failed conection to DB!!!!");
             e.printStackTrace();
@@ -224,7 +222,7 @@ public class HardwareInfoCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

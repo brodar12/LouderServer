@@ -1,5 +1,6 @@
 package com.Databases;
 
+import com.InitializeResources.InitDatabaseConnection;
 import com.Model.Networking;
 
 import java.sql.*;
@@ -14,9 +15,7 @@ public class NetworkingCrud {
 
     private Connection con= null;
     private Statement stat=null;
-    private static  final  String DBurl="jdbc:mysql://localhost/LouderAdmin";
-    private static final String username="root";
-    private static final String password="1111";
+
 
 
     public NetworkingCrud(){}
@@ -25,8 +24,8 @@ public class NetworkingCrud {
     public boolean create_connection(){
         boolean conect_status=true;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection(DBurl,username, password);
+
+            con= InitDatabaseConnection.getInstance().get_database_connection();
             stat=con.createStatement();
         } catch (Exception e) {
             conect_status=false;
@@ -45,7 +44,7 @@ public class NetworkingCrud {
                 stat.executeUpdate("Insert into networking values(null,'"+item.getIp()+"','"+item.getMacaddress()+"',now());");
             }
             stat.close();
-            con.close();
+           //con.close();
         } catch (SQLException e) {
             status_execution=false;
             e.printStackTrace();
@@ -67,7 +66,7 @@ public class NetworkingCrud {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,7 +86,7 @@ public class NetworkingCrud {
                     logg.log(Level.INFO, "Showw idddddddddd:" + id);
                 }
                 stat.close();
-                con.close();
+               // con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

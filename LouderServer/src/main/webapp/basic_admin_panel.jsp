@@ -1,4 +1,4 @@
-<%@ page import = "java.util.ArrayList,java.util.Map,com.Databases.DownloadStatus,com.Model.PcHardware,com.DisplayContent.HardwarePagination,com.Databases.HardwareInfoCrud" %>
+<%@ page import = "java.util.ArrayList,java.util.Map,com.InitializeResources.InitResources,com.Databases.DownloadStatus,com.Model.PcHardware,com.DisplayContent.HardwarePagination,com.Databases.HardwareInfoCrud" %>
 
 <!doctype html>
 <html lang="en">
@@ -28,7 +28,7 @@
 
 <div class="nav_bar" >
     <a class="active" href="#home">Admin Panel</a>
-       <a class="logoutstyle" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=modalpathfile">Set File Path</a>
+       <a class="logoutstyle" href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=modalpathfile">Set File Path</a>
        <div class="logout_component">
        <a class="logoutstyle" href="#logout" >Logout</a>
        </div>
@@ -71,8 +71,8 @@ else{
 <div class="row">
     <div class="emptycol" style="height:50px; width: 1024px;">
       <h2>Statistics</h2>
-       <button class="btn btn-success" onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=sendforallfile&macaddress=null';" style="margin-left: 79%;margin-top: -6%;"  >Send All File</button>
-       <button class="btn btn-danger" onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=clearall&macaddress=null';" style="margin-left: 91%;margin-top: -11%;"  >Clear All</button>
+       <button class="btn btn-success" onclick="location.href='http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/StatusServlet?status=sendforallfile&macaddress=null';" style="margin-left: 79%;margin-top: -6%;"  >Send All File</button>
+       <button class="btn btn-danger" onclick="location.href='http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/StatusServlet?status=clearall&macaddress=null';" style="margin-left: 91%;margin-top: -11%;"  >Clear All</button>
     </div>
 </div>
 
@@ -111,7 +111,7 @@ else{
                   <th scope="row"><%= count_pag %></th>
                   <td><%= items.get(i).getDate_time()%></td>
                   <td>
-                    <a href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=modal&macaddress=<%=items.get(i).getMacaddress()%>" ><%= items.get(i).getIp()%></a>
+                    <a href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=modal&macaddress=<%=items.get(i).getMacaddress()%>" ><%= items.get(i).getIp()%></a>
                   </td>
                   <td>
                         <%
@@ -136,7 +136,7 @@ else{
                          <%
                          if(status_down.get_download_status(items.get(i).getMacaddress())==false){
                          %>
-                         <button type="button" class="btn btn-primary" style="width:115px; margin-left: -20px;"  onclick="location.href='http://localhost:8080/LouderServer/serv/StatusServlet?status=decline&macaddress=<%=items.get(i).getMacaddress()%>';" >Install file</button>
+                         <button type="button" class="btn btn-primary" style="width:115px; margin-left: -20px;"  onclick="location.href='http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/StatusServlet?status=decline&macaddress=<%=items.get(i).getMacaddress()%>';" >Install file</button>
                           <%
                           }else{
                           %>
@@ -165,18 +165,18 @@ else{
         <div class="paginationinfo" style="height: 60px; width: 400px;">
                  <nav aria-label="Page navigation example">
                    <ul class="pagination">
-                     <li class="page-item"><a class="page-link" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=downloadstat&action=prev&curent_page=empty">Previous</a></li>
+                     <li class="page-item"><a class="page-link" href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=downloadstat&action=prev&curent_page=empty">Previous</a></li>
                      <% for(int i=HardwarePagination.get_previous_page();i<=HardwarePagination.get_next_page();++i){
                          if(i==HardwarePagination.get_curent_page()){
                      %>
-                    <li class="page-item"><a class="page-link" style="background-color:#4caf5078;" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=downloadstat&action=empty&curent_page=<%=i%>"><%=i%></a></li>
+                    <li class="page-item"><a class="page-link" style="background-color:#4caf5078;" href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=downloadstat&action=empty&curent_page=<%=i%>"><%=i%></a></li>
                     <% }else{
                     %>
-                     <li class="page-item"><a class="page-link" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=downloadstat&action=empty&curent_page=<%=i%>"><%=i%></a></li>
+                     <li class="page-item"><a class="page-link" href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=downloadstat&action=empty&curent_page=<%=i%>"><%=i%></a></li>
                      <%}
                      }
                      %>
-                     <li class="page-item"><a class="page-link" href="http://localhost:8080/LouderServer/serv/PaginationServlet?display=downloadstat&action=next&curent_page=empty">Next</a></li>
+                     <li class="page-item"><a class="page-link" href="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/PaginationServlet?display=downloadstat&action=next&curent_page=empty">Next</a></li>
                    </ul>
                  </nav>
                </div>
@@ -211,7 +211,7 @@ else{
          </div>
         <div class="row">
           <div class="col">
-                   <form method="POST" action="http://localhost:8080/LouderServer/serv/StatusServlet?macaddres=&ipaddres='">
+                   <form method="POST" action="http://<%=InitResources.getInstance().getHostname()%>:<%=InitResources.getInstance().getPort()%>/LouderServer/serv/StatusServlet?macaddres=&ipaddres='">
                      <div class="row">
                        <div class="col">
                          <input type="text" name="filePath" style="width:100%; margin-top:20px;" class="form-control"

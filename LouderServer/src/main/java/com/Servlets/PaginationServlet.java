@@ -1,6 +1,7 @@
 package com.Servlets;
 
 import com.DisplayContent.HardwarePagination;
+import com.InitializeResources.InitResources;
 
 
 import javax.servlet.ServletException;
@@ -19,7 +20,6 @@ public class PaginationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-
 
         if(req.getParameter("display").equals("downloadstat")) {
 
@@ -41,13 +41,13 @@ public class PaginationServlet extends HttpServlet {
                 }
             }
 
-            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
+            resp.sendRedirect("http://"+ InitResources.getInstance().getHostname()+":"+InitResources.getInstance().getPort()+"/LouderServer/basic_admin_panel.jsp");
         }
         else if(req.getParameter("display").equals("modal")){
-            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp?modalaces=true&mac="+ req.getParameter("macaddress"));
+            resp.sendRedirect("http://"+InitResources.getInstance().getHostname()+":"+InitResources.getInstance().getPort()+"/LouderServer/basic_admin_panel.jsp?modalaces=true&mac="+ req.getParameter("macaddress"));
         }
         else if(req.getParameter("display").equals("modalpathfile")){
-            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp?modalaces1=true&mac=");
+            resp.sendRedirect("http://"+InitResources.getInstance().getHostname()+":"+InitResources.getInstance().getPort()+"/LouderServer/basic_admin_panel.jsp?modalaces1=true&mac=");
         }
 
 

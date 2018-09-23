@@ -2,6 +2,7 @@ package com.Servlets;
 
 import com.Databases.DownloadStatus;
 import com.Filter.FilterNetworkinginfo;
+import com.InitializeResources.InitResources;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,7 @@ public class StatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
         FilterNetworkinginfo validate_net = new FilterNetworkinginfo();
         DownloadStatus downloadStatus= new DownloadStatus();
         PrintWriter out = resp.getWriter();
@@ -28,7 +30,8 @@ public class StatusServlet extends HttpServlet {
             Logger logg = Logger.getLogger(this.getClass().getName());
             resp.setContentType("text/html");
 
-             if (req.getParameter("macaddres") != "" && req.getParameter("ipaddres") != ""){
+
+            if (req.getParameter("macaddres") != "" && req.getParameter("ipaddres") != ""){
                  logg.log(Level.INFO, "Log get valid mac and ip:" + validate_net.validate_IP(req.getParameter("ipaddres"))+" mac:"+ validate_net.validate_Macaddress(req.getParameter("macaddres")));
 
                  if(downloadStatus.validate_macaddress_and_ip(validate_net.validate_Macaddress(req.getParameter("macaddres")),validate_net.validate_IP(req.getParameter("ipaddres")))==true){
@@ -48,7 +51,7 @@ public class StatusServlet extends HttpServlet {
              else if(req.getParameter("filePath") != ""){
                  logg.log(Level.INFO, "Log path to file:"+req.getParameter("filePath"));
                  downloadStatus.set_file_path(req.getParameter("filePath") );
-                 resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
+                 resp.sendRedirect("http://"+InitResources.getInstance().getHostname()+":"+InitResources.getInstance().getPort()+"/LouderServer/basic_admin_panel.jsp");
              }
 
 
@@ -83,7 +86,7 @@ public class StatusServlet extends HttpServlet {
             }
 
 
-            resp.sendRedirect("http://localhost:8080/LouderServer/basic_admin_panel.jsp");
+            resp.sendRedirect("http://"+InitResources.getInstance().getHostname()+":"+InitResources.getInstance().getPort()+"/LouderServer/basic_admin_panel.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

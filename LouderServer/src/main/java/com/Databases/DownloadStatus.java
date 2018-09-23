@@ -1,5 +1,7 @@
 package com.Databases;
 
+import com.InitializeResources.InitDatabaseConnection;
+
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
@@ -13,9 +15,6 @@ public class DownloadStatus {
 
     private Connection con= null;
     private Statement stat=null;
-    private static  final  String DBurl="jdbc:mysql://localhost/LouderAdmin";
-    private static final String username="root";
-    private static final String password="1111";
 
 
 
@@ -23,8 +22,8 @@ public class DownloadStatus {
     public boolean create_connection(){
         boolean conect_status=true;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection(DBurl,username, password);
+
+            con= InitDatabaseConnection.getInstance().get_database_connection();
             stat=con.createStatement();
         } catch (Exception e) {
             conect_status=false;
@@ -43,7 +42,7 @@ public class DownloadStatus {
                 stat.executeUpdate("Insert into downloadstatus value(null,false,false,"+macaddress_id+");");
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             status_execution=false;
             e.printStackTrace();
@@ -66,7 +65,7 @@ public class DownloadStatus {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,7 +85,7 @@ public class DownloadStatus {
                 }
             }
             stat.close();
-            con.close();
+          //  con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -105,7 +104,7 @@ public class DownloadStatus {
                 }
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -121,7 +120,7 @@ public class DownloadStatus {
                     else return false;
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -137,7 +136,7 @@ public class DownloadStatus {
                 else return false;
             }
             stat.close();
-            con.close();
+          //  con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -151,7 +150,7 @@ public class DownloadStatus {
                 else return false;
             }
             stat.close();
-            con.close();
+           // con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -169,7 +168,7 @@ public class DownloadStatus {
                 if(save_val<=0)return false;
             }
             stat.close();
-            con.close();
+          //  con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -186,7 +185,7 @@ public class DownloadStatus {
 
         try {
             out= new FileOutputStream(getClass().getResource("/netconfig.properties").getPath());
-            prop.setProperty("file_path_mem",file_path);
+            prop.setProperty("networking.file_path_mem",file_path);
             prop.store(out,null);
             out.close();
         } catch (IOException e) {
@@ -205,8 +204,8 @@ public class DownloadStatus {
         try {
             in= new FileInputStream(getClass().getResource("/netconfig.properties").getPath());
             prop.load(in);
-            if(prop.getProperty("file_path_mem").toString()!="null"){
-                return prop.getProperty("file_path_mem");
+            if(prop.getProperty("networking.file_path_mem").toString()!="null"){
+                return prop.getProperty("networking.file_path_mem");
             }
             in.close();
         } catch (IOException e) {
